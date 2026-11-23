@@ -7,6 +7,13 @@ const db = require('./models')
 // Create a new Express instance called "app"
 const app = express()
 
+// Twig templates live in ./views
+app.set('views', __dirname + '/views')
+app.set('view engine', 'twig')
+
+// Serve CSS and uploaded images from ./public
+app.use(express.static(__dirname + '/public'))
+
 // Parse JSON and form bodies
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -16,9 +23,7 @@ const routers = require('./routers/index.js')
 
 // Home page welcome middleware
 app.get('/', (req, res) => {
-  res
-    .status(200)
-    .send('Welcome to Star Tracker Library')
+  res.status(200).render('home.html.twig')
 })
 
 // Register our RESTful routers with our "app"
@@ -27,7 +32,7 @@ app.use(`/stars`,    routers.star)
 app.use(`/galaxies`, routers.galaxy)
 
 // Anything else is a 404
-app.use((req, res) => res.status(404).json({ message: 'Not found.' }))
+app.use((req, res) => res.status(404).render('404.html.twig'))
 
 // Wait for MySQL to accept connections, then listen on 8080.
 // Tables come from the migrations: npx sequelize-cli db:migrate
