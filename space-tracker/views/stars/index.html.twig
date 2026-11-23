@@ -1,0 +1,24 @@
+{% extends "layout.html.twig" %}
+{% block title %}Stars{% endblock %}
+{% block content %}
+  <div class="row">
+    <h1>Stars</h1>
+    <a class="button" href="/stars/new">New Star</a>
+  </div>
+  {% if stars|length %}
+    <table>
+      <thead><tr><th>Name</th><th>Size</th><th>Description</th></tr></thead>
+      <tbody>
+      {% for item in stars %}
+        <tr>
+          <td><a href="/stars/{{ item.id }}">{{ item.name }}</a></td>
+          <td>{{ item.size }}</td>
+          <td>{{ item.description }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="empty">No stars yet. <a href="/stars/new">Add the first one</a>.</p>
+  {% endif %}
+{% endblock %}

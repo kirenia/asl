@@ -1,0 +1,21 @@
+{% extends "layout.html.twig" %}
+{% block title %}{{ star.name }}{% endblock %}
+{% block content %}
+  <p><a href="/stars">&larr; All stars</a></p>
+  <article class="detail">
+    {% if image %}<img src="{{ image }}" alt="{{ star.name }}">{% endif %}
+    <div>
+      <h1>{{ star.name }}</h1>
+      <p><strong>Size:</strong> {{ star.size }}</p>
+      <p>{{ star.description }}</p>
+      {% if star.Galaxy %}<p><strong>Galaxy:</strong> <a href="/galaxies/{{ star.Galaxy.id }}">{{ star.Galaxy.name }}</a></p>{% endif %}
+      {% if star.Planets|length %}<h2>Planets</h2><ul>{% for p in star.Planets %}<li><a href="/planets/{{ p.id }}">{{ p.name }}</a></li>{% endfor %}</ul>{% endif %}
+    </div>
+  </article>
+  <div class="actions">
+    <a class="button" href="/stars/{{ star.id }}/edit">Edit</a>
+    <form method="post" action="/stars/{{ star.id }}/delete">
+      <button class="danger" type="submit">Delete</button>
+    </form>
+  </div>
+{% endblock %}

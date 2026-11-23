@@ -1,0 +1,24 @@
+{% extends "layout.html.twig" %}
+{% block title %}Galaxies{% endblock %}
+{% block content %}
+  <div class="row">
+    <h1>Galaxies</h1>
+    <a class="button" href="/galaxies/new">New Galaxy</a>
+  </div>
+  {% if galaxies|length %}
+    <table>
+      <thead><tr><th>Name</th><th>Size</th><th>Description</th></tr></thead>
+      <tbody>
+      {% for item in galaxies %}
+        <tr>
+          <td><a href="/galaxies/{{ item.id }}">{{ item.name }}</a></td>
+          <td>{{ item.size }}</td>
+          <td>{{ item.description }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="empty">No galaxies yet. <a href="/galaxies/new">Add the first one</a>.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "layout.html.twig" %}
+{% block title %}{{ star.id ? 'Edit ' ~ star.name : 'New Star' }}{% endblock %}
+{% block content %}
+  <h1>{{ star.id ? 'Edit ' ~ star.name : 'New Star' }}</h1>
+  <form class="form" method="post" enctype="multipart/form-data" action="{{ star.id ? '/stars/' ~ star.id : '/stars' }}">
+    <label>Name <input name="name" required value="{{ star.name }}"></label>
+    <label>Size <input name="size" type="number" required value="{{ star.size }}"></label>
+    <label>Description <textarea name="description" rows="4">{{ star.description }}</textarea></label>
+    <label>Galaxy
+      <select name="galaxyId">
+        <option value="">None</option>
+        {% for g in galaxies %}<option value="{{ g.id }}" {% if star.galaxyId == g.id %}selected{% endif %}>{{ g.name }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Image <input name="image" type="file" accept="image/*"></label>
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

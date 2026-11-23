@@ -1,0 +1,18 @@
+{% extends "layout.html.twig" %}
+{% block title %}{{ planet.id ? 'Edit ' ~ planet.name : 'New Planet' }}{% endblock %}
+{% block content %}
+  <h1>{{ planet.id ? 'Edit ' ~ planet.name : 'New Planet' }}</h1>
+  <form class="form" method="post" enctype="multipart/form-data" action="{{ planet.id ? '/planets/' ~ planet.id : '/planets' }}">
+    <label>Name <input name="name" required value="{{ planet.name }}"></label>
+    <label>Size <input name="size" type="number" required value="{{ planet.size }}"></label>
+    <label>Description <textarea name="description" rows="4">{{ planet.description }}</textarea></label>
+    <label>Stars it orbits (hold Cmd to pick more than one)
+      <select name="starIds" multiple size="4">
+        {% for s in stars %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}
+      </select>
+    </label>
+    <input type="hidden" name="starIds" value="">
+    <label>Image <input name="image" type="file" accept="image/*"></label>
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}
