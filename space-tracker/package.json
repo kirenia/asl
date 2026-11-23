@@ -1,0 +1,25 @@
+{
+  "name": "space-tracker",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon -e twig,json,js index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "nodemon": "^3.0.3",
+    "sequelize-cli": "^6.6.2"
+  },
+  "dependencies": {
+    "@jworkman-fs/asl": "^1.2.43",
+    "@jworkman-fs/wdv-cli": "^1.5.5",
+    "axios": "^1.21.0",
+    "express": "^4.22.3",
+    "mysql2": "^3.11.0",
+    "sequelize": "^6.37.3"
+  }
+}

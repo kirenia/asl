@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "asl",
+    "password": "asl",
+    "database": "wdv442_space_tracker",
+    "host": "wdv442-mysql",
+    "dialect": "mysql"
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": ":memory:",
+    "logging": false
+  },
+  "production": {
+    "username": "asl",
+    "password": "asl",
+    "database": "wdv442_space_tracker",
+    "host": "wdv442-mysql",
+    "dialect": "mysql"
+  }
+}
