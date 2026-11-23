@@ -1,0 +1,4 @@
+wordpress/var/
+wordpress/src/
+.DS_Store
+node_modules/
